@@ -2,7 +2,7 @@
 
 Personal GitHub Pages site.
 
-- `/` redirects to `/cv/`.
+- `/` is the landing page: about, open-source projects, experience, stack, contact, and links to the CV.
 - `/cv/` is the design CV with a PDF download. The public copy leaves out the phone number.
 
 The CV source lives in the private `job-search` repo (`cv/cv-design.html`). After changing it there, refresh this copy and push:

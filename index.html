@@ -3,14 +3,1005 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Maksym Synenko</title>
-    <meta http-equiv="refresh" content="0; url=cv/" />
-    <link rel="canonical" href="https://devmaxxx.github.io/cv/" />
-    <script>
-      location.replace('cv/');
-    </script>
+    <title>Maksym Synenko — Senior Full-Stack Engineer</title>
+    <meta
+      name="description"
+      content="Senior full-stack / backend engineer in Gdańsk. TypeScript, NestJS, React, PostgreSQL, Azure, MCP servers and AI agent tooling. Open source: zerograph, bond, react-html5-parser."
+    />
+    <meta property="og:title" content="Maksym Synenko — Senior Full-Stack Engineer" />
+    <meta
+      property="og:description"
+      content="Platforms, product frontends and AI agent tooling. TypeScript, NestJS, React, PostgreSQL, Azure, MCP."
+    />
+    <meta property="og:url" content="https://devmaxxx.github.io/" />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f5f74'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='28' text-anchor='middle' fill='%23f6c453'%3EMS%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f6f5;
+        --bg-2: #e9eeec;
+        --surface: #ffffff;
+        --fg: #10181c;
+        --muted: #56656c;
+        --line: #d5dedd;
+        --accent: #1f5f74;
+        --accent-2: #d9940b;
+        --glow: rgb(31 95 116 / 0.14);
+        --node: 31 95 116;
+        --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+        --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          color-scheme: dark;
+          --bg: #0b1114;
+          --bg-2: #101a1e;
+          --surface: #121d22;
+          --fg: #e8eef0;
+          --muted: #93a6ad;
+          --line: #22323a;
+          --accent: #6cc3d9;
+          --accent-2: #f6c453;
+          --glow: rgb(108 195 217 / 0.12);
+          --node: 108 195 217;
+        }
+      }
+      :root[data-theme='dark'] {
+        color-scheme: dark;
+        --bg: #0b1114;
+        --bg-2: #101a1e;
+        --surface: #121d22;
+        --fg: #e8eef0;
+        --muted: #93a6ad;
+        --line: #22323a;
+        --accent: #6cc3d9;
+        --accent-2: #f6c453;
+        --glow: rgb(108 195 217 / 0.12);
+        --node: 108 195 217;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 72px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 400 17px/1.6 var(--display);
+        font-variation-settings: 'wdth' 96;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent-2);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      @media (min-width: 720px) {
+        .wrap {
+          padding: 0 32px;
+        }
+      }
+      .mono {
+        font-family: var(--mono);
+      }
+
+      /* Nav */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: color-mix(in srgb, var(--bg) 78%, transparent);
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        gap: 16px;
+      }
+      .mark {
+        font: 800 1.05rem var(--display);
+        font-variation-settings: 'wdth' 80;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+      .mark span {
+        color: var(--accent-2);
+      }
+      .nav ul {
+        display: flex;
+        gap: 4px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font: 500 0.82rem var(--mono);
+      }
+      .nav li a {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--muted);
+      }
+      .nav li a:hover {
+        color: var(--fg);
+        background: var(--bg-2);
+      }
+      .nav li a.cv {
+        color: var(--bg);
+        background: var(--fg);
+      }
+      @media (max-width: 560px) {
+        .nav li.opt {
+          display: none;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+      #graph {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          ellipse 70% 80% at 20% 40%,
+          var(--bg) 30%,
+          transparent 75%
+        );
+      }
+      .hero .wrap {
+        position: relative;
+        z-index: 1;
+        padding-top: clamp(56px, 11vw, 128px);
+        padding-bottom: clamp(56px, 9vw, 112px);
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font: 500 0.8rem var(--mono);
+        color: var(--muted);
+        border: 1px solid var(--line);
+        background: var(--surface);
+        padding: 6px 12px 6px 10px;
+        border-radius: 999px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2fb36c;
+        box-shadow: 0 0 0 0 rgb(47 179 108 / 0.6);
+        animation: pulse 2.4s infinite;
+      }
+      @keyframes pulse {
+        70% {
+          box-shadow: 0 0 0 8px rgb(47 179 108 / 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgb(47 179 108 / 0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .dot {
+          animation: none;
+        }
+      }
+      h1 {
+        margin: 22px 0 0;
+        font-weight: 850;
+        font-variation-settings: 'wdth' 64;
+        font-size: clamp(3.4rem, 13vw, 8.6rem);
+        line-height: 0.86;
+        letter-spacing: -0.015em;
+      }
+      h1 .last {
+        display: block;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--fg);
+      }
+      @supports not (-webkit-text-stroke: 2px black) {
+        h1 .last {
+          color: var(--fg);
+        }
+      }
+      .lede {
+        margin: 28px 0 0;
+        max-width: 40ch;
+        font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+        line-height: 1.4;
+        font-variation-settings: 'wdth' 90;
+      }
+      .lede em {
+        font-style: normal;
+        color: var(--accent);
+        font-weight: 650;
+      }
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 32px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font: 600 0.92rem var(--mono);
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        cursor: pointer;
+        color: var(--fg);
+        transition:
+          transform 0.15s,
+          border-color 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+      }
+      .btn.primary {
+        background: var(--fg);
+        color: var(--bg);
+        border-color: var(--fg);
+      }
+      .btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Facts */
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border-bottom: 1px solid var(--line);
+      }
+      .facts > div {
+        padding: 26px 20px;
+        min-width: 0;
+      }
+      .facts > div + div {
+        border-left: 1px solid var(--line);
+      }
+      .facts b {
+        display: block;
+        font-weight: 850;
+        font-variation-settings: 'wdth' 70;
+        font-size: clamp(2rem, 4.5vw, 3rem);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .facts span {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+      @media (max-width: 720px) {
+        .facts {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .facts > div:nth-child(3) {
+          border-left: 0;
+        }
+        .facts > div:nth-child(n + 3) {
+          border-top: 1px solid var(--line);
+        }
+      }
+
+      /* Sections */
+      section {
+        padding: clamp(64px, 9vw, 112px) 0 0;
+      }
+      .kicker {
+        font: 500 0.78rem var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 12px;
+      }
+      h2 {
+        margin: 0 0 36px;
+        font-weight: 820;
+        font-variation-settings: 'wdth' 70;
+        font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+        line-height: 0.98;
+        letter-spacing: -0.01em;
+        max-width: 18ch;
+      }
+
+      /* Projects */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .project {
+        grid-column: span 3;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 26px;
+        border-radius: var(--radius);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        min-width: 0;
+        transition:
+          transform 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .project:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        box-shadow: 0 18px 40px -20px var(--glow), 0 0 0 4px var(--glow);
+      }
+      .project.feature {
+        grid-column: span 6;
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 28px;
+        padding: 32px;
+        background:
+          radial-gradient(circle at 100% 0%, var(--glow), transparent 55%),
+          var(--surface);
+      }
+      .project.third {
+        grid-column: span 2;
+      }
+      @media (max-width: 900px) {
+        .project,
+        .project.third {
+          grid-column: span 6;
+        }
+        .project.feature {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .project h3 {
+        margin: 0;
+        font-weight: 800;
+        font-variation-settings: 'wdth' 78;
+        font-size: 1.6rem;
+        line-height: 1.1;
+      }
+      .feature h3 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+      }
+      .project p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font: 500 0.74rem var(--mono);
+      }
+      .tag {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: var(--bg-2);
+        color: var(--fg);
+        border: 1px solid var(--line);
+      }
+      .tag.lang {
+        background: transparent;
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .links {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-top: 6px;
+        font: 600 0.84rem var(--mono);
+      }
+      .links a {
+        text-decoration: none;
+        color: var(--accent);
+      }
+      .links a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .term {
+        margin: 0;
+        align-self: stretch;
+        padding: 18px 20px;
+        border-radius: 10px;
+        background: #0b1114;
+        color: #cfe3e8;
+        font: 400 0.82rem/1.7 var(--mono);
+        overflow-x: auto;
+        border: 1px solid #22323a;
+      }
+      .term .p {
+        color: #f6c453;
+      }
+      .term .c {
+        color: #6f8790;
+      }
+      .term .o {
+        color: #6cc3d9;
+      }
+
+      /* What I do */
+      .do {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      @media (max-width: 900px) {
+        .do {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .do article {
+        padding: 26px;
+        border-top: 3px solid var(--accent);
+        background: var(--surface);
+        border-radius: 0 0 var(--radius) var(--radius);
+        border-left: 1px solid var(--line);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .do article:nth-child(2) {
+        border-top-color: var(--accent-2);
+      }
+      .do article:nth-child(3) {
+        border-top-color: var(--fg);
+      }
+      .do h3 {
+        margin: 0 0 10px;
+        font-weight: 780;
+        font-variation-settings: 'wdth' 80;
+        font-size: 1.3rem;
+      }
+      .do p {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      /* Experience */
+      .xp {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--line);
+      }
+      .xp li {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 8px 32px;
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      @media (max-width: 720px) {
+        .xp li {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      .xp time {
+        font: 500 0.85rem var(--mono);
+        color: var(--muted);
+        padding-top: 4px;
+      }
+      .xp h3 {
+        margin: 0;
+        font-weight: 780;
+        font-variation-settings: 'wdth' 80;
+        font-size: 1.3rem;
+      }
+      .xp h3 span {
+        color: var(--accent);
+      }
+      .xp p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      /* Stack */
+      .stack {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 14px 32px;
+        margin: 0;
+      }
+      @media (max-width: 720px) {
+        .stack {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 6px;
+        }
+        .stack dd {
+          margin-bottom: 12px;
+        }
+      }
+      .stack dt {
+        font: 500 0.82rem/2.2 var(--mono);
+        color: var(--muted);
+      }
+      .stack dd {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        min-width: 0;
+      }
+
+      /* Contact */
+      .contact {
+        margin-top: clamp(64px, 9vw, 112px);
+        background: var(--fg);
+        color: var(--bg);
+      }
+      .contact .wrap {
+        padding-top: clamp(56px, 8vw, 96px);
+        padding-bottom: 40px;
+      }
+      .contact .kicker {
+        color: var(--accent-2);
+      }
+      .contact h2 {
+        max-width: 20ch;
+      }
+      .contact p {
+        max-width: 56ch;
+        opacity: 0.8;
+        margin: -16px 0 28px;
+      }
+      .contact .btn {
+        background: transparent;
+        color: var(--bg);
+        border-color: color-mix(in srgb, var(--bg) 30%, transparent);
+      }
+      .contact .btn.primary {
+        background: var(--accent-2);
+        border-color: var(--accent-2);
+        color: #10181c;
+      }
+      .contact .btn:hover {
+        border-color: var(--accent-2);
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 64px;
+        padding-top: 20px;
+        border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+        font: 400 0.8rem var(--mono);
+        opacity: 0.7;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p><a href="cv/">Maksym Synenko — CV</a></p>
+    <nav class="nav" aria-label="Main">
+      <div class="wrap">
+        <a class="mark" href="#top">Maksym<span>.</span>Synenko</a>
+        <ul>
+          <li class="opt"><a href="#projects">Projects</a></li>
+          <li class="opt"><a href="#work">Work</a></li>
+          <li><a href="https://github.com/devmaxxx">GitHub</a></li>
+          <li><a class="cv" href="cv/">CV</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="top">
+      <header class="hero">
+        <canvas id="graph" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <span class="status"><span class="dot"></span>Open to work · remote or hybrid in Gdańsk</span>
+          <h1>Maksym <span class="last">Synenko</span></h1>
+          <p class="lede">
+            Senior full-stack engineer. I build <em>platforms</em>, the <em>products</em> on top of them, and
+            lately the <em>AI agent tooling</em> that works inside them.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="cv/">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+              Read my CV
+            </a>
+            <a class="btn" href="cv/maksym-synenko-cv.pdf" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+              PDF
+            </a>
+            <a class="btn" href="https://www.linkedin.com/in/devmaxxxx/">LinkedIn</a>
+            <a class="btn" href="https://github.com/devmaxxx">GitHub</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="wrap">
+        <div class="facts" aria-label="At a glance">
+          <div><b>8 yrs</b><span>shipping to production</span></div>
+          <div><b>6 yrs</b><span>on one healthcare staffing platform</span></div>
+          <div><b>~1,000</b><span>consultants on the mobile app I maintain</span></div>
+          <div><b>200k+</b><span>records migrated from a legacy CRM</span></div>
+        </div>
+      </div>
+
+      <section id="projects">
+        <div class="wrap">
+          <p class="kicker">Open source</p>
+          <h2>Things I build when nobody asks.</h2>
+
+          <div class="projects">
+            <article class="project feature reveal">
+              <div style="display: flex; flex-direction: column; gap: 14px">
+                <div class="meta"><span class="tag lang">Rust</span><span class="tag">MCP server</span><span class="tag">npm</span></div>
+                <h3>zerograph</h3>
+                <p>
+                  A knowledge graph of a repository's docs and code, from TypeScript and Kotlin to Rust, SQL and Bicep. Ask by id, keyword or
+                  paraphrase, trace the impact of a change, and serve it all to AI agents over MCP — built and
+                  refreshed at zero model tokens.
+                </p>
+                <div class="meta">
+                  <span class="tag">knowledge graph</span><span class="tag">BM25</span><span class="tag">embeddings</span><span class="tag">impact analysis</span><span class="tag">25 languages</span>
+                </div>
+                <div class="links">
+                  <a href="https://github.com/devmaxxx/zerograph">GitHub →</a>
+                  <a href="https://www.npmjs.com/package/zerograph">npm →</a>
+                </div>
+              </div>
+              <pre class="term" aria-label="zerograph commands"><span class="p">$</span> pnpm add -D zerograph
+<span class="p">$</span> zerograph build            <span class="c"># full graph, no model calls</span>
+<span class="p">$</span> zerograph ask cancellation policy
+<span class="p">$</span> zerograph impact StaffService
+<span class="c">  callers by depth, importing files, a risk line</span>
+<span class="p">$</span> zerograph trace StaffController StaffService
+<span class="p">$</span> zerograph changes --base main
+<span class="p">$</span> zerograph mcp              <span class="c"># serve it to agents</span></pre>
+            </article>
+
+            <article class="project reveal">
+              <div class="meta"><span class="tag lang">JavaScript</span><span class="tag">Claude Code plugin</span></div>
+              <h3>bond</h3>
+              <p>
+                The dev-workflow plugin my team runs in Claude Code: 17 commands, 14 agents, 14 skills and 12 hooks,
+                with MCP integrations for Jira, Bitbucket and Teams — ticket to merged PR.
+              </p>
+              <div class="links"><a href="https://github.com/devmaxxx/bond">GitHub →</a></div>
+            </article>
+
+            <article class="project reveal">
+              <div class="meta"><span class="tag lang">TypeScript</span><span class="tag">React</span><span class="tag">React Native</span></div>
+              <h3>react-html5-parser</h3>
+              <p>
+                Turns HTML strings into React and React Native elements, sanitized by default. No
+                <code class="mono">dangerouslySetInnerHTML</code>.
+              </p>
+              <div class="links">
+                <a href="https://github.com/devmaxxx/react-html5-parser">GitHub →</a>
+                <a href="https://www.npmjs.com/package/react-html5-parser">npm →</a>
+              </div>
+            </article>
+
+            <article class="project third reveal">
+              <div class="meta"><span class="tag lang">TypeScript</span><span class="tag">React</span></div>
+              <h3>react-clear-browser-cache</h3>
+              <p>Notices a new deploy in open tabs, clears Cache Storage and reloads — or asks first.</p>
+              <div class="links">
+                <a href="https://github.com/devmaxxx/react-clear-browser-cache">GitHub →</a>
+                <a href="https://www.npmjs.com/package/react-clear-browser-cache">npm →</a>
+              </div>
+            </article>
+
+            <article class="project third reveal">
+              <div class="meta"><span class="tag lang">TypeScript</span><span class="tag">Kotlin</span><span class="tag">iOS</span></div>
+              <h3>react-native-next-wheel-picker</h3>
+              <p>iOS-style wheel picker: native UIPickerView on iOS, a matching Kotlin wheel on Android.</p>
+              <div class="links"><a href="https://github.com/devmaxxx/react-native-next-wheel-picker">GitHub →</a></div>
+            </article>
+
+            <article class="project third reveal">
+              <div class="meta"><span class="tag">more</span></div>
+              <h3>And the rest</h3>
+              <p>Experiments, forks and work in progress live on my GitHub profile.</p>
+              <div class="links"><a href="https://github.com/devmaxxx?tab=repositories">All repositories →</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="wrap">
+          <p class="kicker">What I do</p>
+          <h2>End to end, schema to deploy.</h2>
+          <div class="do">
+            <article class="reveal">
+              <h3>Platforms &amp; backends</h3>
+              <p>
+                API-first NestJS services, PostgreSQL and MongoDB schemas, event-driven workflows with Hatchet and
+                Temporal, and the Azure infrastructure they run on, as code.
+              </p>
+              <div class="meta"><span class="tag">NestJS</span><span class="tag">PostgreSQL</span><span class="tag">Temporal</span><span class="tag">Azure</span></div>
+            </article>
+            <article class="reveal">
+              <h3>Product frontends</h3>
+              <p>
+                Next.js portals, React Native apps used in the field every day, and design systems that keep them
+                consistent — with type-safe clients generated from the API.
+              </p>
+              <div class="meta"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">React Native</span></div>
+            </article>
+            <article class="reveal">
+              <h3>AI agent tooling</h3>
+              <p>
+                MCP servers inside the product, embedding-based matching and semantic search, and the plugins and
+                knowledge graphs that make coding agents useful on a real codebase.
+              </p>
+              <div class="meta"><span class="tag">MCP</span><span class="tag">RAG</span><span class="tag">pgvector</span><span class="tag">Claude Code</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="wrap">
+          <p class="kicker">Experience</p>
+          <h2>Where I've shipped.</h2>
+          <ol class="xp">
+            <li class="reveal">
+              <time>Dec 2020 — now</time>
+              <div>
+                <h3>Senior Full-Stack Engineer, <span>Efisco</span></h3>
+                <p>
+                  Core platforms of Bonliva, a Swedish healthcare staffing group: a greenfield ERP (NestJS, Next.js,
+                  Hatchet, 20+ packages), the CRM, a consultant portal with BankID and the React Native app. Shipped
+                  an MCP server into the API, migrated 200,000+ records from the legacy CRM, own the Azure
+                  infrastructure as code.
+                </p>
+              </div>
+            </li>
+            <li class="reveal">
+              <time>Jun 2020 — Dec 2020</time>
+              <div>
+                <h3>Freelance Front-End Developer</h3>
+                <p>React front-ends for small businesses, including a dapp with MetaMask, ERC-20/721 and Uniswap flows.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <time>Oct 2018 — Jun 2020</time>
+              <div>
+                <h3>Software Engineer (Front-End), <span>CRISPERSOFT</span></h3>
+                <p>React/Redux SPAs for real-estate, social and digital-asset products; a Material UI design system with Storybook; mentored juniors.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <time>Aug 2018 — Oct 2018</time>
+              <div>
+                <h3>JavaScript Engineer, <span>Mobilsoft</span></h3>
+                <p>UI features against a SQL-backed API, in production within the first weeks.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="stack">
+        <div class="wrap">
+          <p class="kicker">Toolbox</p>
+          <h2>Stack I reach for.</h2>
+          <dl class="stack meta">
+            <dt>Backend</dt>
+            <dd><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">GraphQL</span><span class="tag">REST / OpenAPI</span><span class="tag">WebSockets</span><span class="tag">C# / .NET</span><span class="tag">Stripe</span></dd>
+            <dt>Frontend</dt>
+            <dd><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">React Native</span><span class="tag">TanStack Query</span><span class="tag">Tailwind CSS</span><span class="tag">Storybook</span></dd>
+            <dt>Data</dt>
+            <dd><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Kysely</span><span class="tag">TypeORM</span><span class="tag">Hatchet</span><span class="tag">Temporal</span><span class="tag">Service Bus</span></dd>
+            <dt>Cloud</dt>
+            <dd><span class="tag">Azure Container Apps</span><span class="tag">Bicep</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">OpenTelemetry</span><span class="tag">Sentry</span></dd>
+            <dt>AI</dt>
+            <dd><span class="tag">MCP servers</span><span class="tag">Claude Code</span><span class="tag">OpenAI API</span><span class="tag">embeddings</span><span class="tag">RAG</span><span class="tag">pgvector</span></dd>
+            <dt>Testing</dt>
+            <dd><span class="tag">Vitest</span><span class="tag">Jest</span><span class="tag">Playwright</span><span class="tag">contract tests</span></dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="kicker">Contact</p>
+        <h2>Building something? Let's talk.</h2>
+        <p>
+          Gdańsk, Poland. Open to remote worldwide or hybrid in Gdańsk, employment or B2B. Ukrainian, Russian,
+          English (B2), Polish (A2).
+        </p>
+        <div class="cta">
+          <button class="btn primary" type="button" id="copy" data-email="syn.max.13@gmail.com">
+            <span id="copy-label">syn.max.13@gmail.com</span>
+          </button>
+          <a class="btn" href="cv/">CV</a>
+          <a class="btn" href="https://www.linkedin.com/in/devmaxxxx/">LinkedIn</a>
+          <a class="btn" href="https://github.com/devmaxxx">GitHub</a>
+        </div>
+        <footer>
+          <span>© 2026 Maksym Synenko</span>
+          <span>MSc Computer Science · Kharkiv Aviation Institute</span>
+        </footer>
+      </div>
+    </section>
+
+    <script>
+      // Copy email; fall back to mailto when the clipboard is blocked.
+      const copy = document.getElementById('copy');
+      const label = document.getElementById('copy-label');
+      copy.addEventListener('click', async () => {
+        const email = copy.dataset.email;
+        try {
+          await navigator.clipboard.writeText(email);
+          label.textContent = 'Copied ✓';
+          setTimeout(() => (label.textContent = email), 2000);
+        } catch {
+          location.href = 'mailto:' + email;
+        }
+      });
+
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fade sections in as they scroll into view.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Drifting knowledge graph behind the hero, a nod to zerograph.
+      (() => {
+        const canvas = document.getElementById('graph');
+        const ctx = canvas.getContext('2d');
+        const hero = canvas.parentElement;
+        let w, h, nodes, raf;
+
+        function rgb() {
+          return getComputedStyle(document.documentElement).getPropertyValue('--node').trim();
+        }
+
+        function resize() {
+          const dpr = Math.min(devicePixelRatio || 1, 2);
+          w = hero.clientWidth;
+          h = hero.clientHeight;
+          canvas.width = w * dpr;
+          canvas.height = h * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          const count = Math.round(Math.min(70, (w * h) / 14000));
+          nodes = Array.from({ length: count }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25,
+            r: 1.5 + Math.random() * 2
+          }));
+        }
+
+        function frame() {
+          const c = rgb();
+          const max = 150;
+          ctx.clearRect(0, 0, w, h);
+          for (const n of nodes) {
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x < 0 || n.x > w) n.vx *= -1;
+            if (n.y < 0 || n.y > h) n.vy *= -1;
+          }
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const a = nodes[i];
+              const b = nodes[j];
+              const d = Math.hypot(a.x - b.x, a.y - b.y);
+              if (d < max) {
+                ctx.strokeStyle = `rgb(${c} / ${0.35 * (1 - d / max)})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+              }
+            }
+          }
+          ctx.fillStyle = `rgb(${c} / 0.7)`;
+          for (const n of nodes) {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          if (!reduce) raf = requestAnimationFrame(frame);
+        }
+
+        resize();
+        frame();
+        addEventListener('resize', () => {
+          cancelAnimationFrame(raf);
+          resize();
+          frame();
+        });
+        // Stop drawing while the tab is hidden.
+        document.addEventListener('visibilitychange', () => {
+          cancelAnimationFrame(raf);
+          if (!document.hidden) frame();
+        });
+      })();
+    </script>
   </body>
 </html>
