@@ -580,39 +580,49 @@
         min-width: 0;
       }
 
-      /* Contact */
+      /* Contact: a fixed dark panel in both themes, so it never inverts to a
+         pale block in dark mode. */
       .contact {
+        --ink: #e8eef0;
         margin-top: clamp(64px, 9vw, 112px);
-        background: var(--fg);
-        color: var(--bg);
+        color: var(--ink);
+        background:
+          radial-gradient(ellipse 60% 90% at 100% 0%, rgb(108 195 217 / 0.22), transparent 60%),
+          radial-gradient(ellipse 50% 80% at 0% 100%, rgb(246 196 83 / 0.12), transparent 60%),
+          #0a1013;
+        border-top: 1px solid #22323a;
       }
       .contact .wrap {
         padding-top: clamp(56px, 8vw, 96px);
         padding-bottom: 40px;
       }
       .contact .kicker {
-        color: var(--accent-2);
+        color: #f6c453;
       }
       .contact h2 {
         max-width: 20ch;
+        color: #ffffff;
       }
       .contact p {
         max-width: 56ch;
-        opacity: 0.8;
+        color: #a9bcc3;
         margin: -16px 0 28px;
       }
       .contact .btn {
-        background: transparent;
-        color: var(--bg);
-        border-color: color-mix(in srgb, var(--bg) 30%, transparent);
+        background: rgb(255 255 255 / 0.04);
+        color: var(--ink);
+        border-color: #2c3f48;
       }
       .contact .btn.primary {
-        background: var(--accent-2);
-        border-color: var(--accent-2);
+        background: #f6c453;
+        border-color: #f6c453;
         color: #10181c;
       }
       .contact .btn:hover {
-        border-color: var(--accent-2);
+        border-color: #f6c453;
+      }
+      .contact :focus-visible {
+        outline-color: #6cc3d9;
       }
       footer {
         display: flex;
@@ -621,9 +631,9 @@
         gap: 12px;
         margin-top: 64px;
         padding-top: 20px;
-        border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+        border-top: 1px solid #22323a;
         font: 400 0.8rem var(--mono);
-        opacity: 0.7;
+        color: #7f949c;
       }
 
       .reveal {
