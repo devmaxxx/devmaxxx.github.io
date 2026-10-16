@@ -1,20 +1,232 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Maksym Synenko — CV</title>
-    <meta name="description" content="Maksym Synenko, Senior Full-Stack / Backend Engineer (TypeScript, NestJS, React, PostgreSQL, Azure). Gdańsk, Poland; remote or hybrid." />
-    <meta http-equiv="refresh" content="0; url=https://claude.ai/artifact/K2pPjCGZ5PJY3mNqzNyv5N" />
-    <link rel="canonical" href="https://claude.ai/artifact/K2pPjCGZ5PJY3mNqzNyv5N" />
-    <script>
-      location.replace('https://claude.ai/artifact/K2pPjCGZ5PJY3mNqzNyv5N');
-    </script>
-  </head>
-  <body>
-    <p>
-      Maksym Synenko — Senior Full-Stack / Backend Engineer.
-      <a href="https://claude.ai/artifact/K2pPjCGZ5PJY3mNqzNyv5N">Open the CV</a>
-    </p>
-  </body>
+<head>
+<meta charset="utf-8">
+<title>Maksym Synenko — CV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a2530;
+    --slate: #5a6772;
+    --mist: #8a959e;
+    --rule: #d5dce1;
+    --petrol: #1f5f74;
+    --petrol-soft: #e8f1f4;
+    --paper: #ffffff;
+  }
+  @page { size: A4; margin: 5mm 12mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-variation-settings: "wdth" 94;
+    font-size: 8.5pt;
+    line-height: 1.34;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page { max-width: 184mm; margin: 0 auto; padding-block: 10mm; padding-inline: 4mm; }
+  @media print { .page { padding: 0; max-width: none; } }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4, p { margin: 0; }
+
+  header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 3mm 8mm;
+           padding-bottom: 3mm; border-bottom: 2.5px solid var(--ink); }
+  h1 { font-size: 33pt; font-weight: 800; line-height: 0.9; letter-spacing: -0.01em;
+       font-variation-settings: "wdth" 66; }
+  .role { margin-top: 2.2mm; font-size: 12pt; font-weight: 500; color: var(--petrol);
+          font-variation-settings: "wdth" 82; }
+  .contact { list-style: none; margin: 0; padding: 0; text-align: right; font-size: 8.6pt;
+             line-height: 1.62; color: var(--slate); }
+  .contact a { color: var(--ink); font-weight: 550; }
+
+  .pitch { margin-top: 3mm; font-size: 9.3pt; line-height: 1.45; max-width: 172mm; }
+  .pitch strong { font-weight: 650; }
+
+  section { margin-top: 3.2mm; }
+  h2 { display: flex; align-items: center; gap: 3mm; font-size: 13pt; font-weight: 750;
+       font-variation-settings: "wdth" 72; margin-bottom: 2mm; break-after: avoid; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  /* timeline rail: experience is a real chronology */
+  .job { display: grid; grid-template-columns: 25mm 1fr; gap: 0 5mm; }
+  .when { font-size: 8pt; color: var(--slate); text-align: right; padding-top: 0.9mm; line-height: 1.35; }
+  .when span { display: block; color: var(--mist); }
+  .body { position: relative; padding-left: 5mm; padding-bottom: 3.2mm; border-left: 1.5px solid var(--rule); }
+  .job:last-child .body { padding-bottom: 0.5mm; }
+  .body::before { content: ""; position: absolute; left: -1.75mm; top: 1.6mm; width: 2.6mm; height: 2.6mm;
+                  border-radius: 50%; background: var(--paper); border: 1.8px solid var(--petrol); }
+  h3 { font-size: 11pt; font-weight: 700; line-height: 1.2; font-variation-settings: "wdth" 80; }
+  h3 .org { color: var(--petrol); }
+  .sub { margin-top: 0.4mm; color: var(--slate); }
+
+  .track { margin-top: 2.4mm; }
+  .track h4 { margin-bottom: 0.7mm; font-size: 9.3pt; font-weight: 650; }
+  .track h4 span { font-weight: 400; color: var(--slate); }
+  ul { margin: 0; padding-left: 3.4mm; }
+  li { margin: 0 0 0.55mm; padding-left: 0.6mm; }
+  li::marker { color: var(--petrol); }
+  .k { font-weight: 650; }
+
+  .earlier { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .earlier h3 { font-size: 9.8pt; }
+  .earlier .dates { color: var(--slate); font-size: 8pt; margin: 0.2mm 0 0.8mm; }
+
+  .ai { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 7mm; }
+  .ai > div { padding-left: 3mm; border-left: 2px solid var(--petrol); break-inside: avoid; }
+  .ai h3 { font-size: 9.9pt; margin-bottom: 0.5mm; }
+
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+  .projects > div { break-inside: avoid; }
+  .projects h3 { font-size: 10.2pt; margin-bottom: 0.5mm; }
+  .projects .stack { margin-top: 1mm; font-size: 7.9pt; color: var(--slate); }
+
+  .skills { display: grid; grid-template-columns: 25mm 1fr; gap: 0.9mm 5mm; margin: 0; }
+  .skills dt { font-weight: 650; text-align: right; color: var(--slate); }
+  .skills dd { margin: 0; }
+
+  .foot { display: grid; grid-template-columns: 1.5fr 1fr; gap: 7mm; margin-top: 4mm;
+          padding: 3mm 4mm; background: var(--petrol-soft); border-radius: 1.5mm; break-inside: avoid; }
+  .foot h3 { font-size: 9.8pt; margin-bottom: 0.5mm; color: var(--petrol); }
+
+  @media screen and (max-width: 640px) {
+    header, .job, .earlier, .ai, .projects, .skills, .foot { grid-template-columns: 1fr; }
+    .contact, .when, .skills dt { text-align: left; }
+    .when { padding-bottom: 1mm; }
+    h1 { font-size: 30pt; }
+  }
+  @media print { .pdf { display: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div>
+    <h1>Maksym Synenko</h1>
+    <p class="role">Senior Full-Stack / Backend Engineer building web, mobile and AI agent tooling</p>
+  </div>
+  <ul class="contact">
+    <li class="pdf"><a href="maksym-synenko-cv.pdf" download>Download PDF</a></li>
+    <li><a href="mailto:syn.max.13@gmail.com">syn.max.13@gmail.com</a></li>
+    <li><a href="https://www.linkedin.com/in/devmaxxxx">linkedin.com/in/devmaxxxx</a></li>
+    <li><a href="https://github.com/devmaxxx">github.com/devmaxxx</a></li>
+    <li>Gdańsk, Poland</li>
+  </ul>
+</header>
+
+<p class="pitch">
+  Senior full-stack engineer with <strong>8 years in production</strong>, the last six building the core platforms of
+  Bonliva, a Swedish healthcare staffing group. I own features end to end &mdash; schema, API, background workflow, UI and
+  deploy &mdash; and lately the AI layer on top: <strong>MCP servers and agent tooling</strong> built into the product. Hands-on <strong>Web3</strong> with viem and wagmi: transaction lifecycle,
+  nonces and ERC-20 allowance flows, tested on a mainnet fork.
+</p>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="when">Dec 2020 – now<span>Gdańsk, Poland</span></div>
+    <div class="body">
+      <h3>Senior Full-Stack Engineer, <span class="org">Efisco</span></h3>
+      <p class="sub">Bonliva healthcare staffing platform: ERP, CRM, consultant portal and mobile app</p>
+
+      <div class="track">
+        <h4>Bonliva ERP <span>· NestJS, Next.js, PostgreSQL, Hatchet</span></h4>
+        <ul>
+          <li>Core contributor to a greenfield ERP: Turborepo monorepo, NestJS API, Next.js app, Hatchet worker, 20+ packages.</li>
+          <li><span class="k">API-first:</span> one OpenAPI surface serves the web app, an MCP server and integrations; a generated type-safe client makes contract drift fail in CI, not production.</li>
+          <li>Shipped an <span class="k">MCP server</span> in the NestJS API (JWT, Streamable HTTP) and embedding-based matching, with e2e tests.</li>
+          <li>PostgreSQL with TypeORM and Kysely; event-driven processing with Hatchet workflows and an outbox for SMS/email.</li>
+          <li>Accommodations (bookings, taxation), Bemlo vacancy intake, booking export and CRM/Bemlo time-sheet sync.</li>
+          <li>Migrated <span class="k">200,000+ records</span> from the legacy CRM through a custom ETL pipeline: nightly ETL plus event-driven sync.</li>
+        </ul>
+      </div>
+
+      <div class="track">
+        <h4>Bonliva CRM, portal and mobile app <span>· GraphQL, MongoDB, .NET, React Native</span></h4>
+        <ul>
+          <li>GraphQL and REST APIs over MongoDB and MikroORM, C# / .NET time report service; ERP↔CRM sync via Service Bus and Temporal.</li>
+          <li>Next.js consultant portal with BankID sign-in; React Native app used by <span class="k">~1,000 healthcare consultants</span>.</li>
+        </ul>
+      </div>
+
+      <div class="track">
+        <h4>Platform and team <span>· Azure, GitHub Actions</span></h4>
+        <ul>
+          <li>Azure infrastructure as code: Container Apps, Service Bus, Storage; dev, staging and production.</li>
+          <li>Ship to production daily; OpenTelemetry and Sentry traces, metrics and structured logs.</li>
+          <li>Claude Code plugin with MCP for Jira, Bitbucket and Teams, used for the team's ticket-to-PR work; code review in a team of 4.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">2018 – 2020<span>Kharkiv, Ukraine</span></div>
+    <div class="body">
+      <div class="earlier">
+        <div>
+          <h3>Freelance Front-End Developer</h3>
+          <p class="dates">Jun – Dec 2020, remote</p>
+          <p>React front-ends for small business clients, from scoping and estimation to delivery.</p>
+        </div>
+        <div>
+          <h3>Software Engineer, <span class="org">CRISPERSOFT</span></h3>
+          <p class="dates">Oct 2018 – Jun 2020</p>
+          <p>React/Redux SPAs for real estate, social and digital-asset products; Material UI + Storybook design system; mentored juniors.</p>
+        </div>
+        <div>
+          <h3>JavaScript Engineer, <span class="org">Mobilsoft</span></h3>
+          <p class="dates">Aug – Oct 2018</p>
+          <p>UI features against a SQL-backed API; shipped to production within the first weeks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Open source</h2>
+  <div class="ai" style="grid-template-columns: 1fr 1fr 1fr">
+    <div>
+      <h3>zerograph</h3>
+      <p>Rust code knowledge graph for AI agents over MCP, zero model tokens.</p>
+    </div>
+    <div>
+      <h3>bond &middot; Claude Code plugin</h3>
+      <p>17 commands, 14 agents, 14 skills, 12 hooks.</p>
+    </div>
+    <div>
+      <h3>React libraries</h3>
+      <p>react-html5-parser &middot; react-native-next-wheel-picker &middot; react-clear-browser-cache</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Backend</dt><dd>TypeScript, Node.js, NestJS, GraphQL, REST, WebSockets, OpenAPI, C#, ASP.NET Core, Stripe API (payments), Entra ID (MSAL), Better Auth</dd>
+    <dt>Frontend</dt><dd>React, Next.js, React Native, Tailwind CSS, TanStack Query, Redux, MobX, Payload CMS</dd>
+    <dt>Data, workflows</dt><dd>PostgreSQL (PL/pgSQL), MongoDB, Redis, TypeORM, MikroORM, Kysely, Hatchet, Temporal, Service Bus, multi-tenancy</dd>
+    <dt>Cloud, DevOps</dt><dd>Azure (Container Apps, Blob Storage), Bicep (IaC), Docker, GitHub Actions, Nx, OpenTelemetry, Sentry, Grafana</dd>
+    <dt>AI, testing</dt><dd>MCP servers, Claude Code, OpenAI API, embeddings, semantic search, RAG, pgvector, agent tooling; Vitest, Jest, Playwright, NUnit, Moq, contract tests</dd>
+    <dt>Web3</dt><dd>Ethereum, viem, wagmi, web3.js, ethers.js, MetaMask, ERC-20, ERC-721, EIP-1559, Uniswap</dd>
+    <dt>Languages</dt><dd>Ukrainian (native), Russian (C2), English (B2), Polish (A2)</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <dl class="skills">
+    <dt>2012 – 2018</dt><dd><span class="k">MSc (2018) and BSc (2016), Computer Science</span> · National Aerospace University “Kharkiv Aviation Institute”, Ukraine</dd>
+  </dl>
+</section>
+
+</div>
+</body>
 </html>

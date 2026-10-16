@@ -1,5 +1,15 @@
 # devmaxxx.github.io
 
-Personal GitHub Pages site. The root redirects to [/cv](https://devmaxxx.github.io/cv/), which redirects to the CV page published at https://claude.ai/artifact/K2pPjCGZ5PJY3mNqzNyv5N.
+Personal GitHub Pages site.
 
-The CV itself lives in the private `job-search` repo (`profiles/profile-page.html`); update it there and republish the artifact. This repo only holds the redirects.
+- `/` redirects to `/cv/`.
+- `/cv/` is the design CV with a PDF download. The public copy leaves out the phone number.
+
+The CV source lives in the private `job-search` repo (`cv/cv-design.html`). After changing it there, refresh this copy and push:
+
+```sh
+scripts/sync-cv.py            # expects ../job-search; pass another path if needed
+git add cv && git commit -m "docs(cv): sync from job-search" && git push
+```
+
+The script strips the phone line, refuses to run if a phone-like number remains, prints the PDF with headless Chrome and checks that it is one page.
