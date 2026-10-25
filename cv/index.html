@@ -75,7 +75,7 @@
   .earlier h3 { font-size: 9.8pt; }
   .earlier .dates { color: var(--slate); font-size: 8pt; margin: 0.2mm 0 0.8mm; }
 
-  .ai { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 7mm; }
+  .ai { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.2mm 5mm; }
   .ai > div { padding-left: 3mm; border-left: 2px solid var(--petrol); break-inside: avoid; }
   .ai h3 { font-size: 9.9pt; margin-bottom: 0.5mm; }
   .ai h3 .stack { font-size: 7.9pt; font-weight: 400; color: var(--slate); }
@@ -129,10 +129,10 @@
       <div class="track">
         <h4>Bonliva ERP <span>· NestJS, Next.js, PostgreSQL, Hatchet</span></h4>
         <ul>
-          <li>Core contributor to a greenfield ERP: Turborepo monorepo, NestJS API, Next.js app, Hatchet worker, 20+ packages.</li>
+          <li>Core contributor to a greenfield ERP: Turborepo monorepo, NestJS API, Next.js app, Hatchet worker, 27 packages.</li>
           <li>Designed the API-first backend: one <span class="k">OpenAPI</span> spec feeds the web app, MCP server and integrations; a generated TypeScript client catches breaking changes in CI.</li>
-          <li>Shipped an <span class="k">MCP server</span> in the NestJS API (JWT, Streamable HTTP) and embedding-based matching, with e2e tests.</li>
-          <li>Modelled PostgreSQL schemas with TypeORM and Kysely; built event-driven processing on Hatchet workflows with an outbox for SMS/email.</li>
+          <li>Extended the <span class="k">MCP server</span> in the NestJS API to <span class="k">~120 tools</span> (JWT, Streamable HTTP); tenant-scoped pgvector semantic search, contract tests.</li>
+          <li>Modelled PostgreSQL schemas with TypeORM and Kysely; event-driven Hatchet workflows with an outbox for SMS/email, hardened against Postgres restarts and slow queries.</li>
           <li>Accommodations (bookings, taxation), Bemlo vacancy intake, booking export and CRM/Bemlo time-sheet sync.</li>
         </ul>
       </div>
@@ -189,6 +189,10 @@
       <h3>React libraries <span class="stack">· github.com/devmaxxx</span></h3>
       <p>react-html5-parser &middot; react-native-next-wheel-picker &middot; react-clear-browser-cache</p>
     </div>
+    <div>
+      <h3>AI-agent security <span class="stack">· shell-secrets (npm), shell-guards, pii-allowlist</span></h3>
+      <p>Zero-dependency guards for AI-agent tool calls: secrets, risky shell commands, PII in logs.</p>
+    </div>
   </div>
 </section>
 
@@ -200,7 +204,7 @@
     <dt>Front-End, mobile</dt><dd>React, Next.js, React Native, Expo, Redux, MobX, Material UI, Tailwind CSS, Firebase</dd>
     <dt>Data, workflows</dt><dd>PostgreSQL (pgvector), MongoDB, Redis, TypeORM, Kysely, MikroORM; Temporal, Hatchet, Azure Service Bus</dd>
     <dt>AI, LLM</dt><dd>AI agents, LLM, Model Context Protocol (MCP) servers, prompt engineering, embeddings, semantic search, RAG, Claude Code, Claude / OpenAI / DeepSeek APIs</dd>
-    <dt>Cloud, DevOps</dt><dd>Azure, Azure Container Apps, Terraform, Docker, GitHub Actions, fastlane, CI/CD; OpenTelemetry, Sentry, Grafana</dd>
+    <dt>Cloud, DevOps</dt><dd>Azure, Azure Container Apps, Bicep, Ansible, Docker, GitHub Actions, fastlane, CI/CD; OpenTelemetry, Sentry, Grafana</dd>
     <dt>Testing, tooling</dt><dd>Jest, Vitest, Playwright, e2e testing, Turborepo</dd>
     <dt>Spoken</dt><dd>Ukrainian (native), Russian (C2), English (B2), Polish (A2)</dd>
   </dl>
