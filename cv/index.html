@@ -78,22 +78,14 @@
   .ai { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm 7mm; }
   .ai > div { padding-left: 3mm; border-left: 2px solid var(--petrol); break-inside: avoid; }
   .ai h3 { font-size: 9.9pt; margin-bottom: 0.5mm; }
-
-  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
-  .projects > div { break-inside: avoid; }
-  .projects h3 { font-size: 10.2pt; margin-bottom: 0.5mm; }
-  .projects .stack { margin-top: 1mm; font-size: 7.9pt; color: var(--slate); }
+  .ai h3 .stack { font-size: 7.9pt; font-weight: 400; color: var(--slate); }
 
   .skills { display: grid; grid-template-columns: 25mm 1fr; gap: 0.9mm 5mm; margin: 0; }
   .skills dt { font-weight: 650; text-align: right; color: var(--slate); }
   .skills dd { margin: 0; }
 
-  .foot { display: grid; grid-template-columns: 1.5fr 1fr; gap: 7mm; margin-top: 4mm;
-          padding: 3mm 4mm; background: var(--petrol-soft); border-radius: 1.5mm; break-inside: avoid; }
-  .foot h3 { font-size: 9.8pt; margin-bottom: 0.5mm; color: var(--petrol); }
-
   @media screen and (max-width: 640px) {
-    header, .job, .earlier, .ai, .projects, .skills, .foot { grid-template-columns: 1fr; }
+    header, .job, .earlier, .ai, .skills { grid-template-columns: 1fr; }
     .contact, .when, .skills dt { text-align: left; }
     .when { padding-bottom: 1mm; }
     h1 { font-size: 30pt; }
@@ -107,13 +99,14 @@
 <header>
   <div>
     <h1>Maksym Synenko</h1>
-    <p class="role">Senior Full-Stack / Backend Engineer building web, mobile and AI agent tooling</p>
+    <p class="role">Senior Full-Stack / Backend Engineer · TypeScript · AI agents &amp; LLM</p>
   </div>
   <ul class="contact">
     <li class="pdf"><a href="maksym-synenko-cv.pdf" download>Download PDF</a></li>
     <li><a href="mailto:syn.max.13@gmail.com">syn.max.13@gmail.com</a></li>
     <li><a href="https://www.linkedin.com/in/devmaxxxx">linkedin.com/in/devmaxxxx</a></li>
     <li><a href="https://github.com/devmaxxx">github.com/devmaxxx</a></li>
+    <li><a href="https://devmaxxx.github.io/cv/">devmaxxx.github.io</a></li>
     <li>Gdańsk, Poland</li>
   </ul>
 </header>
@@ -121,8 +114,7 @@
 <p class="pitch">
   Senior full-stack engineer with <strong>8 years in production</strong>, the last six building the core platforms of
   Bonliva, a Swedish healthcare staffing group. I own features end to end &mdash; schema, API, background workflow, UI and
-  deploy &mdash; and lately the AI layer on top: <strong>MCP servers and agent tooling</strong> built into the product. Hands-on <strong>Web3</strong> with viem and wagmi: transaction lifecycle,
-  nonces and ERC-20 allowance flows, tested on a mainnet fork.
+  deploy &mdash; and lately the AI layer on top: <strong>LLM-based AI agents and MCP servers</strong> built into the product.
 </p>
 
 <section>
@@ -140,7 +132,7 @@
           <li>Core contributor to a greenfield ERP: Turborepo monorepo, NestJS API, Next.js app, Hatchet worker, 20+ packages.</li>
           <li><span class="k">API-first:</span> one OpenAPI surface serves the web app, an MCP server and integrations; a generated type-safe client makes contract drift fail in CI, not production.</li>
           <li>Shipped an <span class="k">MCP server</span> in the NestJS API (JWT, Streamable HTTP) and embedding-based matching, with e2e tests.</li>
-          <li>PostgreSQL with TypeORM and Kysely; event-driven processing with Hatchet workflows and an outbox for SMS/email.</li>
+          <li>Modelled PostgreSQL schemas with TypeORM and Kysely; built event-driven processing on Hatchet workflows with an outbox for SMS/email.</li>
           <li>Accommodations (bookings, taxation), Bemlo vacancy intake, booking export and CRM/Bemlo time-sheet sync.</li>
           <li>Migrated <span class="k">200,000+ records</span> from the legacy CRM through a custom ETL pipeline: nightly ETL plus event-driven sync.</li>
         </ul>
@@ -149,17 +141,15 @@
       <div class="track">
         <h4>Bonliva CRM, portal and mobile app <span>· GraphQL, MongoDB, .NET, React Native</span></h4>
         <ul>
-          <li>GraphQL and REST APIs over MongoDB and MikroORM, C# / .NET time report service; ERP↔CRM sync via Service Bus and Temporal.</li>
+          <li>GraphQL and REST APIs over MongoDB and MikroORM; C# / .NET time report service; ERP↔CRM sync via Service Bus and Temporal with an inbox pattern.</li>
           <li>Next.js consultant portal with BankID sign-in; React Native app used by <span class="k">~1,000 healthcare consultants</span>.</li>
         </ul>
       </div>
 
       <div class="track">
-        <h4>Platform and team <span>· Azure, GitHub Actions</span></h4>
+        <h4>AI tooling <span>· Claude, OpenAI, DeepSeek, MCP</span></h4>
         <ul>
-          <li>Azure infrastructure as code: Container Apps, Service Bus, Storage; dev, staging and production.</li>
-          <li>Ship to production daily; OpenTelemetry and Sentry traces, metrics and structured logs.</li>
-          <li>Claude Code plugin with MCP for Jira, Bitbucket and Teams, used for the team's ticket-to-PR work; code review in a team of 4.</li>
+          <li>Build AI agents and MCP integrations; write and tune prompts for Claude, OpenAI and DeepSeek models.</li>
         </ul>
       </div>
     </div>
@@ -177,12 +167,12 @@
         <div>
           <h3>Software Engineer, <span class="org">CRISPERSOFT</span></h3>
           <p class="dates">Oct 2018 – Jun 2020</p>
-          <p>React/Redux SPAs for real estate, social and digital-asset products; Material UI + Storybook design system; mentored juniors.</p>
+          <p>React/Redux SPAs for real estate, social and digital-asset products; Material UI design system; mentored juniors.</p>
         </div>
         <div>
           <h3>JavaScript Engineer, <span class="org">Mobilsoft</span></h3>
           <p class="dates">Aug – Oct 2018</p>
-          <p>UI features against a SQL-backed API; shipped to production within the first weeks.</p>
+          <p>JavaScript UI features, SQL queries and defect fixes against a SQL-backed API.</p>
         </div>
       </div>
     </div>
@@ -191,17 +181,13 @@
 
 <section>
   <h2>Open source</h2>
-  <div class="ai" style="grid-template-columns: 1fr 1fr 1fr">
+  <div class="ai">
     <div>
-      <h3>zerograph</h3>
-      <p>Rust code knowledge graph for AI agents over MCP, zero model tokens.</p>
+      <h3><a href="https://github.com/devmaxxx/zerograph">zerograph</a> <span class="stack">· github.com/devmaxxx/zerograph</span></h3>
+      <p>Rust knowledge graph of a repo's code and docs (15+ languages), served to AI agents over MCP; built and refreshed without model tokens.</p>
     </div>
     <div>
-      <h3>bond &middot; Claude Code plugin</h3>
-      <p>17 commands, 14 agents, 14 skills, 12 hooks.</p>
-    </div>
-    <div>
-      <h3>React libraries</h3>
+      <h3>React libraries <span class="stack">· github.com/devmaxxx</span></h3>
       <p>react-html5-parser &middot; react-native-next-wheel-picker &middot; react-clear-browser-cache</p>
     </div>
   </div>
@@ -210,13 +196,14 @@
 <section>
   <h2>Skills</h2>
   <dl class="skills">
-    <dt>Backend</dt><dd>TypeScript, Node.js, NestJS, GraphQL, REST, WebSockets, OpenAPI, C#, ASP.NET Core, Stripe API (payments), Entra ID (MSAL), Better Auth</dd>
-    <dt>Frontend</dt><dd>React, Next.js, React Native, Tailwind CSS, TanStack Query, Redux, MobX, Payload CMS</dd>
-    <dt>Data, workflows</dt><dd>PostgreSQL (PL/pgSQL), MongoDB, Redis, TypeORM, MikroORM, Kysely, Hatchet, Temporal, Service Bus, multi-tenancy</dd>
-    <dt>Cloud, DevOps</dt><dd>Azure (Container Apps, Blob Storage), Bicep (IaC), Docker, GitHub Actions, Nx, OpenTelemetry, Sentry, Grafana</dd>
-    <dt>AI, testing</dt><dd>MCP servers, Claude Code, OpenAI API, embeddings, semantic search, RAG, pgvector, agent tooling; Vitest, Jest, Playwright, NUnit, Moq, contract tests</dd>
-    <dt>Web3</dt><dd>Ethereum, viem, wagmi, web3.js, ethers.js, MetaMask, ERC-20, ERC-721, EIP-1559, Uniswap</dd>
-    <dt>Languages</dt><dd>Ukrainian (native), Russian (C2), English (B2), Polish (A2)</dd>
+    <dt>Programming</dt><dd>TypeScript, JavaScript, C#, SQL</dd>
+    <dt>Backend</dt><dd>Node.js, NestJS, GraphQL, REST, OpenAPI, ASP.NET Core, event-driven architecture</dd>
+    <dt>Frontend, mobile</dt><dd>React, Next.js, React Native, Redux, MobX, Material UI, Tailwind CSS, Firebase</dd>
+    <dt>Data, workflows</dt><dd>PostgreSQL, MongoDB, Redis, pgvector, TypeORM, Kysely, MikroORM; Temporal, Hatchet, Azure Service Bus</dd>
+    <dt>AI, LLM</dt><dd>AI agents, LLM, Model Context Protocol (MCP) servers, prompt engineering, embeddings, semantic search, RAG, Claude Code, Claude / OpenAI / DeepSeek APIs</dd>
+    <dt>Cloud, DevOps</dt><dd>Azure, Azure Container Apps, Terraform, Docker, GitHub Actions, CI/CD; OpenTelemetry, Sentry, Grafana</dd>
+    <dt>Testing, tooling</dt><dd>Jest, Vitest, Playwright, e2e testing, Turborepo</dd>
+    <dt>Spoken</dt><dd>Ukrainian (native), Russian (C2), English (B2), Polish (A2)</dd>
   </dl>
 </section>
 
