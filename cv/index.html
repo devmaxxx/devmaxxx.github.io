@@ -99,7 +99,7 @@
 <header>
   <div>
     <h1>Maksym Synenko</h1>
-    <p class="role">Senior Full-Stack / Backend Engineer · TypeScript · React Native mobile · AI agents &amp; LLM</p>
+    <p class="role">Senior Full-Stack Engineer · Node.js · React · React Native · AI agents &amp; MCP</p>
   </div>
   <ul class="contact">
     <li class="pdf"><a href="maksym-synenko-cv.pdf" download>Download PDF</a></li>
@@ -115,6 +115,7 @@
   Senior full-stack engineer with <strong>8 years in production</strong>, the last six building the core platforms of
   Bonliva, a Swedish healthcare staffing group. I own features end to end &mdash; schema, API, background workflow, UI and
   deploy &mdash; and lately the AI layer on top: <strong>LLM-based AI agents and MCP servers</strong> built into the product.
+  English daily with the Swedish team.
 </p>
 
 <section>
@@ -129,25 +130,26 @@
       <div class="track">
         <h4>Bonliva ERP <span>· NestJS, Next.js, PostgreSQL, Hatchet</span></h4>
         <ul>
-          <li>Core contributor to a greenfield Turborepo ERP: NestJS API, Next.js app, Hatchet worker, 27 packages.</li>
+          <li>Core contributor to a greenfield ERP running Bonliva's staffing operations: NestJS API, Next.js app, 27 packages.</li>
           <li>Designed the API-first backend: one <span class="k">OpenAPI</span> spec feeds the web app, MCP server and integrations; a generated TypeScript client catches breaking changes in CI.</li>
-          <li>Extended the <span class="k">MCP server</span> in the NestJS API to <span class="k">~120 tools</span> (JWT, Streamable HTTP); tenant-scoped pgvector semantic search, contract tests.</li>
+          <li>Extended the <span class="k">MCP server</span> to <span class="k">~120 tools</span> (JWT, pgvector search), so managers use ERP data through AI agents.</li>
           <li>Modelled and migrated PostgreSQL schemas with TypeORM; event-driven Hatchet workflows with an outbox for SMS/email, hardened against Postgres restarts and slow queries.</li>
-          <li>Accommodations (bookings, taxation), Bemlo vacancy intake, booking export and CRM/Bemlo time-sheet sync.</li>
+          <li>Bookings and accommodation taxation, vacancy intake from a staffing marketplace, automated time-sheet sync.</li>
         </ul>
       </div>
 
       <div class="track">
         <h4>Bonliva CRM, portal and mobile app <span>· GraphQL, MongoDB, .NET, React Native</span></h4>
         <ul>
-          <li>GraphQL and REST APIs over MongoDB and MikroORM; C# / .NET time report service; ERP↔CRM sync via Service Bus and Temporal with an inbox pattern.</li>
-          <li>Next.js consultant portal with BankID sign-in; React Native app used by <span class="k">~1,000 healthcare consultants</span>.</li>
+          <li>GraphQL/REST APIs over MongoDB; C# / .NET time reports; ERP↔CRM sync via Service Bus and Temporal.</li>
+          <li>Next.js consultant portal with BankID sign-in; React Native app used by <span class="k">~1,000 healthcare consultants</span>: <span class="k">~99% crash-free, 4.7 rating</span> (<a href="https://apps.apple.com/se/app/bonliva-konsultportal/id1466738919">App Store</a>, <a href="https://play.google.com/store/apps/details?id=org.bonliva.app">Google Play</a>).</li>
         </ul>
       </div>
 
       <div class="track">
-        <h4>AI tooling <span>· Claude, OpenAI, DeepSeek, MCP</span></h4>
+        <h4>Team and AI tooling <span>· Claude, OpenAI, DeepSeek, MCP</span></h4>
         <ul>
+          <li>Code review in a team of 4; plan technical solutions with the Swedish product team.</li>
           <li>Build AI agents, agent workflows, Claude Code skills and commands, MCP integrations; prompts for LLMs.</li>
         </ul>
       </div>
@@ -166,12 +168,12 @@
         <div>
           <h3>Front-End Developer, <span class="org">CRISPERSOFT</span></h3>
           <p class="dates">Oct 2018 – Jun 2020</p>
-          <p>React/Redux SPAs for real estate, social and digital-asset products; Material UI design system; mentored juniors.</p>
+          <p>React/Redux SPAs for real-estate and digital-asset products; Material UI design system; mentored juniors.</p>
         </div>
         <div>
           <h3>Front-End Developer, <span class="org">Mobilsoft</span></h3>
           <p class="dates">Aug – Oct 2018</p>
-          <p>Shipped JavaScript UI features and fixed front-end bugs in a production web app.</p>
+          <p>JavaScript UI features and bug fixes in a production web app.</p>
         </div>
       </div>
     </div>
@@ -191,7 +193,7 @@
     </div>
     <div>
       <h3><a href="https://github.com/devmaxxx/shell-secrets">shell-secrets</a> <span class="stack">· npm · github.com/devmaxxx/shell-secrets</span></h3>
-      <p>Zero-dependency guard that catches secrets in shell commands and AI-agent tool calls (Claude Code, Codex) before they run.</p>
+      <p>Zero-dependency guard that stops secrets in shell commands and AI-agent tool calls (Claude Code, Codex).</p>
     </div>
   </div>
 </section>
