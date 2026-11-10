@@ -334,3 +334,21 @@ footer .legal a { display: inline; padding: 0; color: var(--dim); }
   .steps .cmd code, .steps li > .cmd > code { font-size: 13.5px; white-space: normal; overflow-wrap: anywhere; overflow: visible; }
   .steps .cmd { padding-left: 12px; }
 }
+
+/* ---- tablet and phone fixes ---- */
+.top nav a { white-space: nowrap; }
+.pipe code { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .top nav a:not(.gh) { display: none; }
+  .steps li { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .steps li::before { top: 20px; margin-top: 0; }
+  .steps li:not(:last-child)::after { top: 36px; }
+}
+@media (max-width: 760px) {
+  .steps li:not(:last-child)::after { top: 34px; }
+}
+@media (max-width: 480px) {
+  .term .dots { display: none; }
+  .tabs { overflow-x: auto; }
+  .tabs button { padding: 6px 10px; font-size: 14px; }
+}
