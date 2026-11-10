@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zerograph: a project knowledge graph for zero API tokens</title>
+<meta name="description" content="A project knowledge graph that costs zero API tokens to build, keep fresh, and query.">
+<meta property="og:title" content="zerograph">
+<meta property="og:description" content="A project knowledge graph that costs zero API tokens to build, keep fresh, and query.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://devmaxxx.github.io/projects/zerograph/assets/og.png">
+<meta property="og:url" content="https://devmaxxx.github.io/projects/zerograph/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top wrap">
+  <a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="32" height="32"><span>zerograph</span></a>
+  <nav aria-label="Primary">
+    <a href="#start">Get started</a>
+    <a href="#action">In action</a>
+    <a href="#how">How it works</a>
+    <a href="#measured">Measured</a>
+    <a href="#fit">Pros &amp; cons</a>
+    <a href="https://github.com/devmaxxx/zerograph/tree/main/docs">Docs</a>
+    <a class="gh" href="https://github.com/devmaxxx/zerograph">GitHub</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="glow" aria-hidden="true">
+    <svg viewBox="0 0 128 128"><g stroke="currentColor" stroke-width=".5" fill="none">
+      <polygon points="64,8 112,36 112,92 64,120 16,92 16,36"/><polygon points="64,24 90,44 90,84 64,104 38,84 38,44"/>
+      <line x1="64" y1="8" x2="64" y2="24"/><line x1="112" y1="36" x2="90" y2="44"/><line x1="112" y1="92" x2="90" y2="84"/>
+      <line x1="64" y1="120" x2="64" y2="104"/><line x1="16" y1="92" x2="38" y2="84"/><line x1="16" y1="36" x2="38" y2="44"/>
+      <line x1="90" y1="44" x2="38" y2="84"/></g></svg>
+  </div>
+  <section class="hero wrap">
+    <p class="eyebrow"><a href="https://www.npmjs.com/package/zerograph">v<span id="version">0.7.1</span></a><span>MIT</span><span>macOS arm64 · Linux x64 · Windows x64</span></p>
+    <h1>A project knowledge graph that costs <em>zero API tokens</em> to build, keep fresh, and query.</h1>
+    <p class="lede">zerograph reads a repository's markdown and code in <span id="languages">24 languages</span> and extracts the
+      structure the authors already wrote. It answers questions about that structure in a few lines of text.</p>
+
+    <div class="install">
+      <code><span class="ps" aria-hidden="true">$ </span><span id="install-line">npm install -g zerograph</span></code>
+      <button type="button" class="copy" data-copy="install-line">Copy</button>
+    </div>
+    <p class="links"><a class="btn" href="https://github.com/devmaxxx/zerograph">View on GitHub</a><a href="#start">Get started ↓</a></p>
+
+    <figure class="video">
+      <video id="brag" poster="assets/brag.jpg" muted loop playsinline controls preload="metadata">
+        <source src="assets/brag.mp4" type="video/mp4">
+        <a href="assets/brag.mp4">Watch the 21-second video</a>
+      </video>
+      <button type="button" class="sound" id="sound" hidden>Sound on</button>
+    </figure>
+  </section>
+
+  <section class="claims wrap" aria-label="What it does">
+    <article>
+      <b class="n" aria-hidden="true">0</b>
+      <h2>Zero tokens by default</h2>
+      <p>Build, refresh and query all run locally. <code>ask --rerank</code> is the only thing that spends model tokens, and only when asked.</p>
+    </article>
+    <article>
+      <b class="n" aria-hidden="true">~<span data-count data-from="0" data-dec="0">200</span></b>
+      <h2>Finds the entry point from plain words</h2>
+      <p>Exact id, BM25 and local dense retrieval find it in about 200 tokens an answer.</p>
+    </article>
+    <article>
+      <b class="n" aria-hidden="true">MCP</b>
+      <h2>Built for agents</h2>
+      <p>Every reader takes <code>--json</code>, there is an MCP server, and a session hook keeps the graph fresh.</p>
+    </article>
+  </section>
+
+  <section id="start" class="wrap">
+    <h2 class="sec">Get started</h2>
+    <p class="note">Five lines, from nothing to an agent that asks the graph first.</p>
+    <ol class="steps">
+      <li>
+        <div class="what"><h3>Install</h3><p>One global binary. Or <code>pnpm add -D zerograph</code> to pin it per project.</p></div>
+        <div class="cmd"><code><span class="ps" aria-hidden="true">$ </span><span id="step-1">npm install -g zerograph</span></code><button type="button" class="copy" data-copy="step-1" aria-label="Copy: Install">Copy</button></div>
+      </li>
+      <li>
+        <div class="what"><h3>Ignore the store</h3><p>The graph is built per checkout and never committed.</p></div>
+        <div class="cmd"><code><span class="ps" aria-hidden="true">$ </span><span id="step-2">echo .zerograph/ &gt;&gt; .gitignore</span></code><button type="button" class="copy" data-copy="step-2" aria-label="Copy: Ignore the store">Copy</button></div>
+      </li>
+      <li>
+        <div class="what"><h3>Build</h3><p>The first run downloads the embedding model; after that only changed files are re-read.</p></div>
+        <div class="cmd"><code><span class="ps" aria-hidden="true">$ </span><span id="step-3">zerograph build</span></code><button type="button" class="copy" data-copy="step-3" aria-label="Copy: Build">Copy</button></div>
+      </li>
+      <li>
+        <div class="what"><h3>Ask</h3><p>Plain words in, <code>path:line</code> out. It stays fresh with your edits.</p></div>
+        <div class="cmd"><code><span class="ps" aria-hidden="true">$ </span><span id="step-4">zerograph ask cancellation policy</span></code><button type="button" class="copy" data-copy="step-4" aria-label="Copy: Ask">Copy</button></div>
+      </li>
+      <li>
+        <div class="what"><h3>Wire your agent</h3><p>Optional: the Claude Code plugin. Also <code>--codex</code>, <code>--cursor</code>, <code>--copilot</code>, <code>--gemini</code>, <code>--opencode</code>.</p></div>
+        <div class="cmd"><code><span class="ps" aria-hidden="true">$ </span><span id="step-5">zerograph install-agent --claude</span></code><button type="button" class="copy" data-copy="step-5" aria-label="Copy: Wire your agent">Copy</button></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="action" class="wrap">
+    <h2 class="sec">In action</h2>
+    <p class="note">Output from zerograph's own checkout. Each line reads <code>path:line  [ID]  headline</code>; <code>└</code> lines are neighbours one hop away.</p>
+    <div class="term">
+    <div class="bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="tabs" role="tablist" aria-label="Commands">
+      <button role="tab" aria-selected="true" aria-controls="ex-ask" id="tab-ask">ask</button>
+      <button role="tab" aria-selected="false" aria-controls="ex-impact" id="tab-impact">impact</button>
+      <button role="tab" aria-selected="false" aria-controls="ex-trace" id="tab-trace">trace</button>
+      <button role="tab" aria-selected="false" aria-controls="ex-explain" id="tab-explain">explain</button>
+    </div></div>
+<pre id="ex-ask" role="tabpanel" aria-labelledby="tab-ask" tabindex="0"><span class="ps">$ </span><b>zerograph ask writer lock</b>
+<i>src/store.rs:531</i>  Store.lock_writer
+  └ <i>src/store.rs:6</i>  Store
+<i>src/lib.rs:2114</i>  tests::a_poll_skips_its_cycle_while_a_refresh_holds_the_writer_lock
+<i>src/store.rs:520</i>  Store.try_lock_writer</pre>
+<pre id="ex-impact" role="tabpanel" aria-labelledby="tab-impact" tabindex="0"><span class="ps">$ </span><b>zerograph impact Store.try_lock_writer</b>
+sym:src/store.rs::Store.try_lock_writer  <i>src/store.rs:520</i>
+<mark>d=1  will break (1)</mark>
+  sym:src/lib.rs::Watcher.poll  <i>src/lib.rs:565</i>  Calls → sym:src/store.rs::Store.try_lock_writer
+importers (7): src/ask.rs, src/bench.rs, src/dump.rs, src/families.rs, src/index/dense.rs, src/mcp.rs, src/status.rs
+<mark>risk: MEDIUM</mark> — 1 direct, 1 total, 8 files</pre>
+<pre id="ex-trace" role="tabpanel" aria-labelledby="tab-trace" tabindex="0"><span class="ps">$ </span><b>zerograph trace Watcher.poll Store.try_lock_writer</b>
+sym:src/lib.rs::Watcher.poll  <i>src/lib.rs:565</i>
+  → sym:src/store.rs::Store.try_lock_writer  <i>src/store.rs:520</i></pre>
+<pre id="ex-explain" role="tabpanel" aria-labelledby="tab-explain" tabindex="0"><span class="ps">$ </span><b>zerograph explain Store.try_lock_writer</b>
+sym:src/store.rs::Store.try_lock_writer  <i>src/store.rs:520</i>  Symbol  Store.try_lock_writer
+  Declares ← sym:src/store.rs::Store  <i>src/store.rs:520</i>
+  Calls ← sym:src/lib.rs::Watcher.poll  <i>src/lib.rs:565</i>
+  Calls → sym:src/store.rs::Store.lock_file  <i>src/store.rs:520</i>
+  Calls → sym:src/store.rs::Store.lock_label  <i>src/store.rs:520</i>
+  Calls → sym:src/store.rs::WriterLock  <i>src/store.rs:520</i></pre>
+    </div>
+    <p class="note">Also: <code>zerograph changes --base main</code> says what the diff touches and who reaches it. <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/commands.md">All commands</a></p>
+  </section>
+
+  <section id="how" class="wrap">
+    <h2 class="sec">How it works</h2>
+    <p class="quote">The hard part is not building a better graph, it is building a better door onto it.</p>
+    <p class="note">A repository's ids, imports and calls already form a dense, human-authored graph. zerograph extracts it and
+      finds the right entry point from a question phrased in ordinary words.</p>
+    <ol class="pipe">
+      <li><b>Exact id or symbol</b><span>A name like <code>FR-PAY-22</code> or <code>StaffService</code> goes straight to its node.</span></li>
+      <li><b>BM25 over passages</b><span>Lexical search over what the docs and code actually say.</span></li>
+      <li><b>Local dense list</b><span>An embedding model on your machine, interleaved with the lexical list rank by rank.</span></li>
+      <li><b>One hop over the graph</b><span>The surviving seeds bring their neighbours, rendered as <code>path:line  ID  headline</code>.</span></li>
+    </ol>
+    <h3 class="sub">What it reads</h3>
+    <p class="note">Requirement ids, cross-references, exports, imports, calls, decorators, and ids quoted in comments, from markdown and:</p>
+    <ul class="chips langs" aria-label="Languages"><li>TypeScript / JavaScript</li><li>Python</li><li>Rust</li><li>Go</li><li>Java</li><li>Kotlin</li><li>Scala</li><li>C#</li><li>C</li><li>C++</li><li>Swift</li><li>Dart</li><li>Ruby</li><li>PHP</li><li>Elixir</li><li>OCaml</li><li>Lua</li><li>Shell</li><li>SQL</li><li>GraphQL</li><li>Vue</li><li>Terraform</li><li>HCL</li><li>Bicep</li></ul>
+    <p class="note"><a href="https://github.com/devmaxxx/zerograph/blob/main/docs/languages.md">What each language reads, and what it does not</a></p>
+  </section>
+
+  <section id="agents" class="wrap split">
+    <div>
+      <h2 class="sec">Agents</h2>
+      <p>The Claude Code plugin starts zerograph's MCP server for the session, briefs each session and subagent on the index,
+        answers a concept grep from the graph before it runs, and names the callers an edit can break.</p>
+      <p class="status"><code>◇ zerograph · in sync</code></p>
+      <ul class="chips" aria-label="Supported agents">
+        <li>Claude Code</li><li>Codex</li><li>Cursor</li><li>Copilot</li><li>Gemini</li><li>opencode</li>
+      </ul>
+    </div>
+    <div class="term"><div class="bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div><pre tabindex="0"><span class="ps">$ </span><b>zerograph install-agent --claude</b>
+<span class="dim"># also --codex --cursor --copilot --gemini --opencode</span>
+
+<span class="dim"># or, inside Claude Code</span>
+<b>/plugin install zerograph --marketplace devmaxxx/zerograph</b></pre></div>
+  </section>
+
+  <section id="measured" class="wrap">
+    <h2 class="sec">Measured</h2>
+    <p class="bench" id="bench-line">keyword 40/40, paraphrase 20/30, code 12/12 at 222 p90 tokens</p>
+    <p class="note">The recorded 82 cases on the bench fixture: 908 files, about 8.3k nodes, default embedder, 0.6.3.
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/benchmarks.md">How it is measured</a></p>
+    <div class="bars" role="img" aria-label="Keyword 40 of 40, paraphrase 20 of 30, code 12 of 12">
+      <div><span>keyword</span><i style="--w: 100%"></i><b>40/40</b></div>
+      <div><span>paraphrase</span><i style="--w: 66.7%"></i><b>20/30</b></div>
+      <div><span>code</span><i style="--w: 100%"></i><b>12/12</b></div>
+    </div>
+    <h3 class="sub">zerograph vs graphify vs GitNexus</h3>
+    <p class="note">Same repository, same questions.
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/bench/2026-09-04-three-graphs-results.md">The full results and method</a></p>
+    <div class="cmp">
+      <figure class="chart wide">
+        <figcaption>Questions answered <span>out of 82</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph · no embedder: 58"><span class="who"><b>zerograph</b> · no embedder</span><span class="track"><i class="z" style="--w: 70.7%"></i></span><span class="val">58</span></div>
+          <div class="row" role="listitem" aria-label="zerograph · e5-small: 61"><span class="who"><b>zerograph</b> · e5-small</span><span class="track"><i class="z" style="--w: 74.4%"></i></span><span class="val">61</span></div>
+          <div class="row" role="listitem" aria-label="zerograph · gemma (default): 72"><span class="who"><b>zerograph</b> · gemma (default)</span><span class="track"><i class="z" style="--w: 87.8%"></i></span><span class="val">72</span></div>
+          <div class="row" role="listitem" aria-label="zerograph · gemma + rerank: 82"><span class="who"><b>zerograph</b> · gemma + rerank</span><span class="track"><i class="z r" style="--w: 100.0%"></i></span><span class="val best">82</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 32"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 39.0%"></i></span><span class="val">32</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 12"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 14.6%"></i></span><span class="val">12</span></div>
+        </div>
+        <p>Rerank (sonnet) is opt-in and the only step that spends model tokens, about 14k a question.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>LLM tokens to build the graph <span>lower is better</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 0"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 0.0%"></i></span><span class="val best">0</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 14.6 M"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 100.0%"></i></span><span class="val">14.6 M</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 0"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 0.0%"></i></span><span class="val best">0</span></div>
+        </div>
+        <p>graphify, a cold build, reads every file with a model; zerograph and GitNexus build locally.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>Answer size <span>median characters, lower is better</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 593"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 8.9%"></i></span><span class="val best">593</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 6 688"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 100.0%"></i></span><span class="val">6 688</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 6 246"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 93.4%"></i></span><span class="val">6 246</span></div>
+        </div>
+        <p>What an agent reads per question: about 150 tokens against 1.6k.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>Answer time <span>median ms, lower is better</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 346"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 23.6%"></i></span><span class="val best">346</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 1 467"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 100.0%"></i></span><span class="val">1 467</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 1 424"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 97.1%"></i></span><span class="val">1 424</span></div>
+        </div>
+        <p>A fresh process per question; zerograph serve answers in 66 ms.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>Impact: files found <span>out of 123</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 123"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 100.0%"></i></span><span class="val best">123</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 57"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 46.3%"></i></span><span class="val">57</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 78"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 63.4%"></i></span><span class="val">78</span></div>
+        </div>
+        <p>16 change targets: every file that reaches each one.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>Call chains traced <span>out of 8</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 8"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 100.0%"></i></span><span class="val best">8</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 5"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 62.5%"></i></span><span class="val">5</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 2"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 25.0%"></i></span><span class="val">2</span></div>
+        </div>
+        <p>Shortest call chain between two symbols, including 2 correct refusals.</p>
+      </figure>
+      <figure class="chart">
+        <figcaption>Size on disk <span>MB, lower is better</span></figcaption>
+        <div role="list">
+          <div class="row" role="listitem" aria-label="zerograph: 32"><span class="who"><b>zerograph</b></span><span class="track"><i class="z" style="--w: 5.4%"></i></span><span class="val best">32</span></div>
+          <div class="row" role="listitem" aria-label="graphify: 123"><span class="who">graphify</span><span class="track"><i class="g" style="--w: 20.6%"></i></span><span class="val">123</span></div>
+          <div class="row" role="listitem" aria-label="GitNexus: 598"><span class="who">GitNexus</span><span class="track"><i class="n" style="--w: 100.0%"></i></span><span class="val">598</span></div>
+        </div>
+        <p>The whole index for one checkout.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap split worktrees">
+    <div>
+      <h2 class="sec">Worktrees</h2>
+      <p>Each checkout keeps its own graph and index in <code>.zerograph/</code>, so worktrees, clones and branches never share
+        state. The only thing shared is a cache of embeddings. Parallel agents are safe: one writer lock per checkout.</p>
+    </div>
+    <p class="big"><b><span data-count data-from="46" data-dec="1">1.5</span> s</b><span>to build a clone of zerograph itself, instead of 46 s, with the same answers.</span></p>
+  </section>
+
+  <section id="fit" class="wrap">
+    <h2 class="sec">Where it fits, and where it does not</h2>
+    <div class="fit">
+      <div class="pro">
+        <h3>Good at</h3>
+        <ul>
+          <li><b>Costing nothing.</b> Build, refresh and query all run locally, for zero API tokens.</li>
+          <li><b>Short answers.</b> About 200 tokens of <code>path:line</code>, not a dump of files.</li>
+          <li><b>Ids, symbols and keywords.</b> 40/40 keyword and 12/12 code on the recorded bench.</li>
+          <li><b>Staying fresh.</b> A session hook refreshes the graph, and a refresh re-reads only the files that changed.</li>
+          <li><b>Parallel agents.</b> A graph per checkout and one writer lock, so worktrees never wait on each other.</li>
+          <li><b>Being checkable.</b> The risk label is four fixed thresholds printed with the counts they came from.</li>
+        </ul>
+      </div>
+      <div class="con">
+        <h3>Know before you trust it</h3>
+        <ul>
+          <li><b>Loose wording misses a third of the time.</b> Paraphrase reads 20/30. <code>ask --rerank</code> helps, and it is the one step that spends tokens.</li>
+          <li><b>It records only what a file proves.</b> A call through a chained expression or a callback has no edge, so a "nothing uses this" wants an <code>rg -l</code> beside it.</li>
+          <li><b>Grep is still right for a literal.</b> The graph is for concepts, callers and ids.</li>
+          <li><b>Three platforms.</b> macOS arm64, Linux x64 and Windows x64.</li>
+          <li><b>A model download.</b> The first build fetches the embedding model, about 200 MB on disk.</li>
+          <li><b>Depth varies by language.</b> Swift is read without imports or calls, and Razor is opt-in.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap">
+    <h2 class="sec">Questions</h2>
+    <details><summary>Does anything leave my machine?</summary>
+      <p>Build, refresh and query all run locally. <code>ask --rerank</code> is the only thing that spends model tokens, and only when asked.</p></details>
+    <details><summary>How does it stay fresh?</summary>
+      <p>The agent's session hook refreshes the graph per checkout, and a resident <code>serve</code> polls and re-reads only the files that changed.
+        An answer given while files are behind says so itself. <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/keeping-fresh.md">Keeping fresh</a></p></details>
+    <details><summary>Do worktrees and branches share a graph?</summary>
+      <p>No. Each checkout keeps its own graph and index in <code>.zerograph/</code>. The only thing shared is a cache of embeddings, text hash to vector,
+        which is why a new worktree builds in seconds.</p></details>
+    <details><summary>Which embedding model does it use?</summary>
+      <p>By default the 4-bit ONNX export of embeddinggemma-300m, run on your machine. Another model can be pinned in <code>zerograph.toml</code>.
+        <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/embeddings.md">Embeddings</a></p></details>
+    <details><summary>Does it replace grep?</summary>
+      <p>No. Ask the graph for a concept, a caller or an id; grep is still right for a literal string.</p></details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div class="about">
+      <a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="36" height="36"><span>zerograph</span></a>
+      <p>A project knowledge graph that costs zero API tokens to build, keep fresh, and query.</p>
+      <p class="badges"><a href="https://github.com/devmaxxx/zerograph">GitHub</a><a href="https://www.npmjs.com/package/zerograph">npm</a></p>
+    </div>
+    <nav aria-label="Use it">
+      <h3>Use it</h3>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/install.md">Install</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/commands.md">Commands</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/keeping-fresh.md">Keeping fresh</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/serve.md">Serve</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/mcp.md">MCP</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/configuration.md">Configuration</a>
+    </nav>
+    <nav aria-label="Understand it">
+      <h3>Understand it</h3>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/how-it-works.md">How it works</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/graph-model.md">The graph model</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/languages.md">Languages</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/embeddings.md">Embeddings</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/rerank.md">Rerank</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/docs/benchmarks.md">Benchmarks</a>
+    </nav>
+    <nav aria-label="Project">
+      <h3>Project</h3>
+      <a href="https://github.com/devmaxxx/zerograph/releases">Releases</a>
+      <a href="https://github.com/devmaxxx/zerograph/issues">Issues</a>
+      <a href="https://github.com/devmaxxx/zerograph#contributing">Contributing</a>
+      <a href="https://github.com/devmaxxx/zerograph/blob/main/LICENSE">MIT license</a>
+    </nav>
+  </div>
+  <div class="wrap legal">
+    <span>MIT licensed. Written in Rust.</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
