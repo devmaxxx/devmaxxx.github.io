@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interview Agent and meet-scribe — on-device meeting AI — Maksym Synenko</title>
+    <meta name="description" content="Two local-first macOS tools in Rust and TypeScript: a live interview copilot and an offline speaker-split transcriber. Audio and transcription never leave the machine." />
+    <meta property="og:title" content="Interview Agent and meet-scribe — on-device meeting AI — Maksym Synenko" />
+    <meta property="og:description" content="Two local-first macOS tools in Rust and TypeScript: a live interview copilot and an offline speaker-split transcriber. Audio and transcription never leave the machine." />
+    <meta property="og:url" content="https://devmaxxx.github.io/projects/interview-agent" />
+    <meta property="og:type" content="article" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f5f74'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='28' text-anchor='middle' fill='%23f6c453'%3EMS%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #f4f6f5; --surface: #ffffff; --fg: #10181c; --muted: #56656c;
+  --line: #d5dedd; --accent: #1f5f74; --accent-2: #d9940b;
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --bg: #0b1114; --surface: #121d22; --fg: #e8eef0;
+    --muted: #93a6ad; --line: #22323a; --accent: #6cc3d9; --accent-2: #f6c453; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 400 16px/1.65 var(--display); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 820px; margin: 0 auto; padding-inline: 22px; }
+.nav { border-bottom: 1px solid var(--line); background: var(--surface); }
+.nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
+.mark { font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--fg); }
+.mark span { color: var(--accent-2); }
+.nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; font-size: 0.92rem; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover, .mark:hover { color: var(--accent); }
+main { padding-block: 54px 72px; display: grid; gap: 40px; }
+.kicker { font: 600 0.76rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); margin: 0 0 14px; }
+h1 { margin: 0 0 14px; font: 800 clamp(2.1rem, 6.4vw, 3.1rem)/1.02 var(--display);
+  letter-spacing: -0.02em; text-wrap: balance; }
+.lede { margin: 0; font-size: 1.1rem; color: var(--muted); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.tag { font: 500 0.75rem/1.5 var(--mono); color: var(--muted); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.tag.lang { color: var(--accent); border-color: var(--accent); }
+h2 { margin: 0 0 14px; font: 700 1.35rem/1.2 var(--display); letter-spacing: -0.01em; }
+section { display: grid; }
+p { margin: 0 0 12px; max-width: 68ch; }
+ul.points { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+ul.points li { position: relative; padding-left: 22px; max-width: 68ch; }
+ul.points li::before { content: ''; position: absolute; left: 4px; top: 10px;
+  width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+ul.points b { font-weight: 700; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px; }
+.term { font: 500 0.84rem/1.75 var(--mono); background: var(--surface); color: var(--fg);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px;
+  overflow-x: auto; white-space: pre; margin: 0; }
+.term .p { color: var(--accent); } .term .c { color: var(--muted); }
+.note { font-size: 0.93rem; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 26px 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+  font: 500 0.85rem var(--mono); color: var(--muted); }
+footer a { color: var(--accent); }
+</style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Main">
+      <div class="wrap">
+        <a class="mark" href="/">Maksym<span>.</span>Synenko</a>
+        <ul>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/cv/">CV</a></li>
+          <li><a href="https://github.com/devmaxxx">GitHub</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <header class="wrap">
+        <p class="kicker">On-device AI · private repositories</p>
+        <h1>Interview Agent &amp; meet-scribe</h1>
+        <p class="lede">Two local-first macOS tools. One listens to a live call and streams talking points for each question asked; the other records the call and writes a transcript split by speaker. The audio never leaves the machine.</p>
+        <div class="meta"><span class="tag lang">Rust</span><span class="tag">TypeScript</span><span class="tag">whisper.cpp</span><span class="tag">sherpa-onnx</span><span class="tag">Claude Agent SDK</span><span class="tag">ffmpeg</span><span class="tag">Metal</span></div>
+      </header>
+      <section class="wrap">
+        <h2>Interview Agent — a live copilot</h2>
+        <ul class="points">
+          <li><b>Both sides of the call.</b> It captures what the Mac plays — the interviewer, in any meeting app — and the microphone as two separate tracks, so your own lines are always labelled correctly without speaker guessing.</li>
+          <li><b>Transcribed on device.</b> whisper.cpp large-v3-turbo runs locally against a local whisper-server; no audio is uploaded anywhere.</li>
+          <li><b>Grounded hints, not chat.</b> For each question it detects, it streams short talking points built from your own resume, the job description and company notes, through the Claude Agent SDK on a Claude subscription — the server refuses to start with an API key set, so it cannot quietly bill an API instead.</li>
+          <li><b>An OpenAI-compatible bridge.</b> The same server answers <code>POST /v1/chat/completions</code> and <code>GET /v1/models</code>, with warm sessions kept ready, so any OpenAI-shaped client can use it as a backend.</li>
+          <li><b>Honest by default.</b> The README's first instruction is to tell the people on the call that you use an AI assistant, and to ask before recording anyone.</li>
+        </ul>
+      </section>
+      <section class="wrap">
+        <h2>meet-scribe — an offline transcriber</h2>
+        <ul class="points">
+          <li><b>Fully offline.</b> Records a Teams or Google Meet call on macOS and writes a transcript split by speaker using only open-source models — whisper.cpp large-v3-turbo on Metal for speech to text, sherpa-onnx with pyannote segmentation and WeSpeaker embeddings for telling the other speakers apart.</li>
+          <li><b>One binary, one setup.</b> A Rust CLI: <code>meet-scribe setup</code> downloads the models once, then recording and diarization run with no network at all.</li>
+          <li><b>Your track is known.</b> Your own lines come from the mic track rather than from clustering, so you are never mislabelled.</li>
+        </ul>
+      </section>
+      <section class="wrap">
+        <h2>Why build them this way</h2>
+        <p>Both tools exist because the useful version of meeting AI is the one you can run during a confidential
+        call. That rules out uploading audio, which in turn decides the whole architecture: local models, Metal
+        acceleration, two captured tracks instead of one mixed stream, and a model call that sees text the user
+        has already agreed to share.</p>
+        <p class="note">Private repositories — they carry personal profiles and recordings. The code and the audio pipeline are easy to demo on a call.</p>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <span>Maksym Synenko · Gdańsk, Poland</span>
+        <span><a href="/projects/">All projects</a> · <a href="/cv/">CV</a> · <a href="https://www.linkedin.com/in/devmaxxxx/">LinkedIn</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autonomous job-search agent — Maksym Synenko</title>
+    <meta name="description" content="An unattended agent pipeline that scouts eleven job boards every hour, applies on its own, asks a human only what it cannot answer, and repairs its own broken searches." />
+    <meta property="og:title" content="Autonomous job-search agent — Maksym Synenko" />
+    <meta property="og:description" content="An unattended agent pipeline that scouts eleven job boards every hour, applies on its own, asks a human only what it cannot answer, and repairs its own broken searches." />
+    <meta property="og:url" content="https://devmaxxx.github.io/projects/job-scout" />
+    <meta property="og:type" content="article" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f5f74'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='28' text-anchor='middle' fill='%23f6c453'%3EMS%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #f4f6f5; --surface: #ffffff; --fg: #10181c; --muted: #56656c;
+  --line: #d5dedd; --accent: #1f5f74; --accent-2: #d9940b;
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --bg: #0b1114; --surface: #121d22; --fg: #e8eef0;
+    --muted: #93a6ad; --line: #22323a; --accent: #6cc3d9; --accent-2: #f6c453; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 400 16px/1.65 var(--display); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 820px; margin: 0 auto; padding-inline: 22px; }
+.nav { border-bottom: 1px solid var(--line); background: var(--surface); }
+.nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; }
+.mark { font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--fg); }
+.mark span { color: var(--accent-2); }
+.nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; font-size: 0.92rem; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover, .mark:hover { color: var(--accent); }
+main { padding-block: 54px 72px; display: grid; gap: 40px; }
+.kicker { font: 600 0.76rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); margin: 0 0 14px; }
+h1 { margin: 0 0 14px; font: 800 clamp(2.1rem, 6.4vw, 3.1rem)/1.02 var(--display);
+  letter-spacing: -0.02em; text-wrap: balance; }
+.lede { margin: 0; font-size: 1.1rem; color: var(--muted); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.tag { font: 500 0.75rem/1.5 var(--mono); color: var(--muted); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.tag.lang { color: var(--accent); border-color: var(--accent); }
+h2 { margin: 0 0 14px; font: 700 1.35rem/1.2 var(--display); letter-spacing: -0.01em; }
+section { display: grid; }
+p { margin: 0 0 12px; max-width: 68ch; }
+ul.points { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+ul.points li { position: relative; padding-left: 22px; max-width: 68ch; }
+ul.points li::before { content: ''; position: absolute; left: 4px; top: 10px;
+  width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+ul.points b { font-weight: 700; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px; }
+.term { font: 500 0.84rem/1.75 var(--mono); background: var(--surface); color: var(--fg);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px;
+  overflow-x: auto; white-space: pre; margin: 0; }
+.term .p { color: var(--accent); } .term .c { color: var(--muted); }
+.note { font-size: 0.93rem; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 26px 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+  font: 500 0.85rem var(--mono); color: var(--muted); }
+footer a { color: var(--accent); }
+</style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="Main">
+      <div class="wrap">
+        <a class="mark" href="/">Maksym<span>.</span>Synenko</a>
+        <ul>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/cv/">CV</a></li>
+          <li><a href="https://github.com/devmaxxx">GitHub</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <header class="wrap">
+        <p class="kicker">Agent system · private repository</p>
+        <h1>Autonomous job-search agent</h1>
+        <p class="lede">Eleven job boards, scanned every hour by Claude Code agents driving a signed-in Chrome. It writes the application, fills the ATS form, submits — and asks a human only what it genuinely cannot answer.</p>
+        <div class="meta"><span class="tag lang">Claude Agent SDK</span><span class="tag">n8n</span><span class="tag">Chrome DevTools Protocol</span><span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">Telegraf</span></div>
+      </header>
+      <section class="wrap">
+        <h2>What it does</h2>
+        <ul class="points">
+          <li><b>Scans on a cadence.</b> Each board has its own interval and its own search URL, asserted before every scan: host, path and the filter params that must survive the redirect. A board whose search shape changed is skipped instead of silently returning nothing.</li>
+          <li><b>Only fresh work.</b> Known links are never reopened; a newest-first list stops at the last scan or three seen cards in a row, and a job page opens only once its card has passed the fit rules.</li>
+          <li><b>Applies end to end.</b> The sender writes a short message from CV facts only, then fills the external ATS form behind the board's own Apply button — Greenhouse, Ashby, Traffit, eRecruiter, Workable, Recruitee — and uploads the current CV.</li>
+          <li><b>Escalates instead of guessing.</b> A question no rule answers becomes a Telegram poll; the answer is written back into the memory file and, if it generalises, proposed as a narrow reusable rule that a human approves with one tap.</li>
+          <li><b>Repairs its own searches.</b> When a board's results collapse, a fix run diagnoses the breakage, merges only whitelisted search-parameter changes, verifies the candidate twice in separate read-only runs, and asks for approval before committing.</li>
+        </ul>
+      </section>
+      <section class="wrap">
+        <h2>How it is built</h2>
+        <ul class="points">
+          <li><b>The model never holds the authority.</b> Limits, fit rules, the rate floor, deduplication and the final submit click live in code and hooks. A scanner agent runs with navigation and scrolling allowed and clicks, typing, scripts and file writes denied; the sender may click submit only after it has written a marker saying what it is about to send, and may append a tracker row only after a confirmation page.</li>
+          <li><b>Two browser layers, one tab.</b> Primary is the Claude in Chrome extension; the DevTools Protocol is the fallback, chosen per hour by a precheck and logged. Every run works in a single tab of a separate Chrome profile and closes only the tabs it opened.</li>
+          <li><b>Durable orchestration.</b> An n8n workflow generated from source — never edited in the UI — runs the hourly loop under a lock, with a gap scan that reaches back up to 48 hours after downtime, per-board caches of seen links, and a queue where anything undeliverable waits as a typed hold that expires on its own schedule.</li>
+          <li><b>Observable by design.</b> Every run writes a list of what was sent, held, skipped and closed, with the cause; detection of empty scans, empty fields and below-median results runs in code, not in a prompt.</li>
+        </ul>
+      </section>
+      <section class="wrap">
+        <h2>A run, in short</h2>
+        <pre class="term" aria-label="One hourly run">
+<span class="p">07:00</span> take lock · chrome precheck <span class="c"># extension up → run on it, CDP as fallback</span>
+<span class="p">     </span> url check    <span class="c"># 11 boards: host, path, filters asserted</span>
+<span class="p">     </span> scan djinni  <span class="c"># read-only agent, 18 cards, 3 pass the fit rules</span>
+<span class="p">     </span> plan sends   <span class="c"># code: validate, dedupe, limits → 2 to send</span>
+<span class="p">     </span> send         <span class="c"># message from CV facts, ATS form, submit</span>
+<span class="p">     </span> record       <span class="c"># tracker rows, queue patch, telegram summary</span>
+<span class="p">     </span> ...          <span class="c"># next board, then fix step, then release lock</span></pre>
+        <p class="note" style="margin-top: 14px">The repository is private: it holds a real CV, real application history and signed-in sessions. Happy to walk through the code and the guardrails on a call.</p>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <span>Maksym Synenko · Gdańsk, Poland</span>
+        <span><a href="/projects/">All projects</a> · <a href="/cv/">CV</a> · <a href="https://www.linkedin.com/in/devmaxxxx/">LinkedIn</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
